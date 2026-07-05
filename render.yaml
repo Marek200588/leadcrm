@@ -8,10 +8,11 @@ databases:
 
 services:
   # --- Backend API (FastAPI) ---
+  # Free plan is the default for web services; declaring "plan: free"
+  # explicitly is rejected, so we omit it.
   - type: web
     name: leadcrm-api
     runtime: python
-    plan: free
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
@@ -21,9 +22,9 @@ services:
           name: leadcrm-db
           property: connectionString
       - key: SECRET_KEY
-        generateValue: true          # Render generates a secure random value
+        generateValue: true
       - key: CORS_ORIGINS
-        sync: false                   # set manually to the frontend URL after first deploy
+        sync: false
       - key: PYTHON_VERSION
         value: "3.12.7"
 
@@ -31,14 +32,13 @@ services:
   - type: web
     name: leadcrm-web
     runtime: static
-    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
-        sync: false                   # set manually to the backend URL after first deploy
+        sync: false
     routes:
-      - type: rewrite                 # SPA fallback — all paths serve index.html
+      - type: rewrite
         source: /*
         destination: /index.html
