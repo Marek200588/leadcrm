@@ -1,0 +1,35 @@
+.import-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.import-intro {
+  font-size: 13px;
+  color: var(--ink-500);
+  line-height: 1.55;
+}
+.import-intro code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  background: var(--surface-sunk);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--ink-800);
+}
+.import-textarea {
+  min-height: 180px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+.import-sample-btn {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-500);
+  transition: var(--transition);
+}
+.import-sample-btn:hover {
+  color: var(--accent-600);
+  text-decoration: underline;
+}

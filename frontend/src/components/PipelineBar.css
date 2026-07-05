@@ -1,0 +1,62 @@
+.pipebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pipebar-track {
+  display: flex;
+  gap: 3px;
+  height: 44px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.pipebar-seg {
+  min-width: 4px;
+  border-radius: 3px;
+  transition: flex-grow 400ms cubic-bezier(0.4, 0, 0.2, 1), filter var(--transition);
+  cursor: default;
+}
+.pipebar-seg:hover {
+  filter: brightness(1.08);
+}
+
+.pipebar-empty-track {
+  flex: 1;
+  border-radius: var(--r-md);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--surface-sunk),
+    var(--surface-sunk) 8px,
+    #eaeef5 8px,
+    #eaeef5 16px
+  );
+}
+
+.pipebar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.pipebar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.pipebar-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.pipebar-legend-label {
+  font-size: 12px;
+  color: var(--ink-500);
+  font-weight: 500;
+}
+.pipebar-legend-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-800);
+}

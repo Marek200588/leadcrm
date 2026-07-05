@@ -1,0 +1,217 @@
+/* ---- Controls ---- */
+.leads-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.leads-search {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+  max-width: 360px;
+}
+.leads-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-400);
+  font-size: 15px;
+  pointer-events: none;
+}
+.leads-search-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px 0 34px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink-900);
+  transition: var(--transition);
+}
+.leads-search-input:focus {
+  outline: none;
+  border-color: var(--accent-500);
+  box-shadow: 0 0 0 3px var(--accent-100);
+}
+
+.leads-filter-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.leads-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-500);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: var(--transition);
+}
+.leads-filter:hover {
+  border-color: var(--ink-300);
+  color: var(--ink-800);
+}
+.leads-filter.active {
+  background: var(--ink-900);
+  color: #fff;
+  border-color: var(--ink-900);
+}
+.leads-filter-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* ---- Table ---- */
+.leads-card {
+  overflow: hidden;
+}
+.leads-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.leads-table thead th {
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-sunk);
+  white-space: nowrap;
+}
+.leads-table th.num {
+  text-align: right;
+}
+.leads-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+.leads-table th.sortable:hover {
+  color: var(--ink-700);
+}
+
+.leads-table tbody tr {
+  cursor: pointer;
+  transition: var(--transition);
+  border-bottom: 1px solid var(--line);
+}
+.leads-table tbody tr:last-child {
+  border-bottom: none;
+}
+.leads-table tbody tr:hover {
+  background: var(--surface-sunk);
+}
+.leads-table td {
+  padding: 14px 20px;
+  vertical-align: middle;
+}
+.leads-table td.num {
+  text-align: right;
+}
+
+.leads-company {
+  font-weight: 600;
+  color: var(--ink-900);
+}
+.leads-category {
+  font-size: 12px;
+  color: var(--ink-400);
+  margin-top: 2px;
+  text-transform: capitalize;
+}
+.leads-contact {
+  color: var(--ink-700);
+  font-size: 13px;
+}
+.leads-email {
+  font-size: 12px;
+  color: var(--ink-400);
+  margin-top: 2px;
+}
+.leads-value {
+  font-weight: 600;
+  color: var(--ink-800);
+}
+.leads-updated {
+  font-size: 12px;
+  color: var(--ink-400);
+  white-space: nowrap;
+}
+.muted {
+  color: var(--ink-300);
+}
+
+/* ---- Pagination ---- */
+.leads-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  gap: 16px;
+}
+.leads-page-info {
+  font-size: 13px;
+  color: var(--ink-500);
+}
+.leads-page-btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.leads-page-num {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-700);
+  min-width: 48px;
+  text-align: center;
+}
+
+/* ---- Toast ---- */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink-900);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  animation: toast-in 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 720px) {
+  .leads-table th:nth-child(4),
+  .leads-table td:nth-child(4),
+  .leads-table th:nth-child(2),
+  .leads-table td:nth-child(2) {
+    display: none;
+  }
+}
