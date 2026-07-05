@@ -6,7 +6,7 @@ databases:
     plan: free
 
 services:
-  # --- Backend API (FastAPI) ---
+  # --- Backend API (FastAPI) — web service accepts plan: free ---
   - type: web
     name: leadcrm-api
     runtime: python
@@ -26,11 +26,10 @@ services:
       - key: PYTHON_VERSION
         value: "3.12.7"
 
-  # --- Frontend (React static site) ---
+  # --- Frontend (React static site) — always free; no plan field ---
   - type: web
     name: leadcrm-web
     runtime: static
-    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
