@@ -29,11 +29,16 @@ class Settings(BaseSettings):
 
     @property
     def normalized_database_url(self) -> str:
-        # Render/Heroku hand out postgres:// URLs; SQLAlchemy needs postgresql://.
+        # Render hands out postgres:// URLs. SQLAlchemy needs a driver-qualified
+        # scheme; we use psycopg v3 (the "psycopg" package), so target
+        # postgresql+psycopg://. SQLite is left untouched.
         url = self.database_url
         if url.startswith("postgres://"):
-            url = url.replace("postgres://", "postgresql://", 1)
+            url = url.replace("postgres://", "postgresql+psycopg://", 1)
+        elif url.startswith("postgresql://"):
+            url = url.replace("postgresql://", "postgresql+psycopg://", 1)
         return url
+    
 
 
 @lru_cache
